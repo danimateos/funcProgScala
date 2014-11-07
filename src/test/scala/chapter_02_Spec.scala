@@ -5,8 +5,13 @@ import com.mateos.chiusano.Chapter_02
 object Chapter_02_Spec extends Specification {
 
   "Exercise 2.1's fibonacci" should {
+
     "correctly calculate the first ten numbers in the Fibonacci Sequence" in {
       (0 to 10).map(Chapter_02.fibonacci) mustEqual List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
+    }
+
+    "contain a tail-recursive inner function" in {
+      "notDone" mustEqual "Done"
     }
   }
   
