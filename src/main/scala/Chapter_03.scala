@@ -132,4 +132,9 @@ object Chapter_03 {
     case Branch(l, r) => Branch(map(l)(f), map(r)(f))
   }
 
+  def fold[A,B,C] (t: Tree[A], z: B) (f: (A, B) => C): Tree[C] = t match {
+    case Leaf(v) => Leaf(f(v, z))
+    case Branch(l, r) => Branch(fold(l, z)(f), fold(r, z)(f))
+  }
+
 }
