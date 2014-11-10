@@ -34,7 +34,6 @@ object Chapter_03 {
   def foldRight[A,B] (as: List[A], z: B) (f: (A, B) => B): B = as match {
     case Nil => z
     case x :: xs => f(x, foldRight(xs, z) (f))
-
   }
 
   def length[A] (l: List[A]): Int = foldRight(l, 0) ((x, y) => y + 1)
@@ -55,4 +54,19 @@ object Chapter_03 {
 
   def lengthWithFoldLeft[A](as: List[A]): Int = foldLeft(as, 0) {(x, z) => z + 1}
 
+//  def reverseWithoutFold[A] (as: List[A]): List[A] = 
+
+/*  def reverseWithFoldRight[A] (as: List[A]): List[A] = as match {
+    case Nil => Nil
+    case x :: xs => foldRight(xs, x :: Nil) {(a,z) => z :: a}
+  }*/
+
+  def reverseWithFoldLeft[A] (as: List[A]): List[A] = as match {
+    case Nil => Nil
+    case x :: xs => foldLeft(xs, x :: Nil) {(a,z) => a :: z}
+  }
+
+  def append[A](a: A, as: List[A]): List[A] = foldRight(as, a :: Nil) ((a, z) => a :: z)
+
+// def flatten[A] (as: List[List[A]]): List[A] = 
 }
