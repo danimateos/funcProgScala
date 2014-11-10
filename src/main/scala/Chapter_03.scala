@@ -90,4 +90,22 @@ object Chapter_03 {
     case x :: xs => if (f(x)) x :: filter(xs) (f) else filter (xs) (f)
   }
 
+//  def flatMap[A,B](as: List[A]) (f: A => List[B]) = 
+
+// def filterWithFlatMap[A] (as: List[A]) (f: A => Boolean): List[A] = 
+
+  def zipInts(as: List[Int], bs: List[Int]): List[Int] = (as, bs) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (x :: xs, y :: ys) => (x + y) :: zipInts(xs, ys)
+  }
+
+  def zipWith[A,B,C] (as: List[A], bs: List[B]) (f: (A,B) => C): List[C] = (as, bs) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (x :: xs, y :: ys) => f(x, y) :: zipWith(xs, ys) (f)
+  }
+
+//  def hasSubsequence
+
 }
