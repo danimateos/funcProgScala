@@ -39,6 +39,20 @@ object Chapter_03 {
 
   def length[A] (l: List[A]): Int = foldRight(l, 0) ((x, y) => y + 1)
 
+  // 3.7: 
 
+  // 3.8: it returns the same list. That means Nil and Cons() are the
+  // identity operators of foldRight.
+
+  def foldLeft[A, B] (as: List[A], z: B) (f: (A, B) => B): B = as match {
+    case Nil     => z
+    case x :: xs => foldLeft(xs, f(x, z)) (f)
+  }
+
+  def sumWithFoldLeft(as: List[Int]): Int = foldLeft(as, 0) (_ + _)
+
+  def productWithFoldLeft(as: List[Int]): Int = foldLeft(as, 1) (_ * _)
+
+  def lengthWithFoldLeft[A](as: List[A]): Int = foldLeft(as, 0) {(x, z) => z + 1}
 
 }

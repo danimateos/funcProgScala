@@ -37,4 +37,29 @@ object Chapter_03_Spec extends Specification {
       Chapter_03.dropWhile(list3, (x: Int) => x > 3) mustEqual 3 :: 2 :: Nil
     }
   }
+
+  "The length() method using foldRight" should {
+    "compute the correct length of lists" in {
+      Chapter_03.length(list1) mustEqual 5
+      Chapter_03.length(Nil) mustEqual 0
+      Chapter_03.length(List("a", "b", "c")) mustEqual 3
+    }
+  }
+
+  "The foldLeft funcions"  should {
+    "produce the same output as the in-built equivalents" in {
+      Chapter_03.sumWithFoldLeft(list1) mustEqual list1.sum
+      Chapter_03.productWithFoldLeft(list1) mustEqual list1.product
+      Chapter_03.lengthWithFoldLeft(list1) mustEqual list1.length
+
+      Chapter_03.sumWithFoldLeft(list2) mustEqual list2.sum
+      Chapter_03.productWithFoldLeft(list2) mustEqual list2.product
+      Chapter_03.lengthWithFoldLeft(list2) mustEqual list2.length
+
+      Chapter_03.sumWithFoldLeft(list3) mustEqual list3.sum
+      Chapter_03.productWithFoldLeft(list3) mustEqual list3.product
+      Chapter_03.lengthWithFoldLeft(list3) mustEqual list3.length
+    }
+  }
+
 }
