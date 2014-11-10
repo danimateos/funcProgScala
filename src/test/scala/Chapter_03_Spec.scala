@@ -8,7 +8,7 @@ object Chapter_03_Spec extends Specification {
   val list2 = 3 :: 2 :: 1 :: 5 :: 6 :: Nil
   val list3 = 6 :: 5 :: 4 :: 3 :: 2 :: Nil
 
-  "The tail() method" should {
+  "The 'tail' method" should {
     "work" in {
       Chapter_03.tail(list1) mustEqual 3 :: 4 :: 5 :: 6 :: Nil
       //Chapter_03.tail(list2) mustEqual 2 :: 1 :: 5 :: 6 :: Nil
@@ -16,14 +16,14 @@ object Chapter_03_Spec extends Specification {
     }
   }
 
-  "The setHead() method" should {
+  "The 'setHead' method" should {
     "work" in {
       Chapter_03.setHead(2, list1) mustEqual 2 :: 3 :: 4 :: 5 :: 6 :: Nil
       Chapter_03.setHead(2, list2) mustEqual 2 :: 2 :: 1 :: 5 :: 6 :: Nil
     }
   }
 
-  "The drop() method" should {
+  "The 'drop' method" should {
     "return Nil" in {
       Chapter_03.drop(list1, 5) mustEqual Nil
     }
@@ -32,13 +32,13 @@ object Chapter_03_Spec extends Specification {
     }
   }
 
-  "The dropWhile() method" should {
+  "The 'dropWhile' method" should {
     "work" in {
       Chapter_03.dropWhile(list3, (x: Int) => x > 3) mustEqual 3 :: 2 :: Nil
     }
   }
 
-  "The length() method using foldRight" should {
+  "The 'length' method using foldRight" should {
     "compute the correct length of lists" in {
       Chapter_03.length(list1) mustEqual 5
       Chapter_03.length(Nil) mustEqual 0
@@ -46,7 +46,7 @@ object Chapter_03_Spec extends Specification {
     }
   }
 
-  "The foldLeft funcions"  should {
+  "The functions using 'foldLeft' from exercise 3.11"  should {
     "produce the same output as the in-built equivalents" in {
       Chapter_03.sumWithFoldLeft(list1) mustEqual list1.sum
       Chapter_03.productWithFoldLeft(list1) mustEqual list1.product
