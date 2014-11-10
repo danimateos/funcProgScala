@@ -62,4 +62,39 @@ object Chapter_03_Spec extends Specification {
     }
   }
 
+  "The reverse functions from exercise 3.12" should {
+    "produce the same output as the in-built equivalents" in {
+      Chapter_03.reverseWithFoldLeft(list1) mustEqual list1.reverse
+      Chapter_03.reverseWithFoldLeft(list2) mustEqual list2.reverse
+      Chapter_03.reverseWithFoldLeft(list3) mustEqual list3.reverse
+    }
+
+    "have been implemented standalone" in {
+      "notDone" mustEqual "done"
+
+    }
+
+    "have been implemented with foldLeft" in {
+      "done" mustEqual "done"
+    }
+
+    "have been implemented with foldRight" in {
+      "notDone" mustEqual "done"
+    }
+  }
+
+  "Exercise 3.13" should {
+    "be" in {
+      "notDone" mustEqual "done"
+    }
+  }
+
+  "Exercise 3.14's 'append'" should {
+    "produce the same output as the in-built equivalent" in {
+      Chapter_03.append(12, list1) mustEqual list1 ++ (12 :: Nil)
+      Chapter_03.append(12, list2) mustEqual list2 ++ (12 :: Nil)
+      Chapter_03.append(12, list3) mustEqual list3 ++ (12 :: Nil)
+    }
+  }
+
 }
