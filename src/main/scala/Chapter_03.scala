@@ -69,4 +69,25 @@ object Chapter_03 {
   def append[A](a: A, as: List[A]): List[A] = foldRight(as, a :: Nil) ((a, z) => a :: z)
 
 // def flatten[A] (as: List[List[A]]): List[A] = 
+
+  def increment (as: List[Int]): List[Int] = as match {
+    case Nil => Nil
+    case x :: xs => (x + 1) :: increment(xs)
+  }
+
+  def doublesToString (as: List[Double]): List[String] = as match {
+    case Nil => Nil
+    case x :: xs => x.toString :: doublesToString(xs)
+  }
+
+  def map[A,B] (as: List[A]) (f: A => B): List[B] = as match {
+    case Nil => Nil
+    case x :: xs => f(x) :: map(xs) (f)
+  }
+
+  def filter[A] (as: List[A]) (f: A => Boolean): List[A] = as match {
+    case Nil => Nil
+    case x :: xs => if (f(x)) x :: filter(xs) (f) else filter (xs) (f)
+  }
+
 }
