@@ -26,12 +26,20 @@ object Chapter_04 {
       case Some(thing) => if (f(thing)) this else None
     }
 
-
   }
 
   case object None extends Option[Nothing]
   case class Some[+A](get: A) extends Option[A]
 
+  def variance(xs: Seq[Double]): Option[Double] = {
+    def mean(ys: Seq[Double]): Option[Double] = 
+      if (ys.length == 0) None else Some(ys.sum / ys. length)
+    mean(xs) flatMap (m => mean(xs.map(x => math.pow(x - m, 2))))
+  }
 
+  def map2[A,B,C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = (a,b) match {
+    case (Some(an), Some(bn)) => Some(f(an, bn))
+    case _ => None
+  }
 
 }
